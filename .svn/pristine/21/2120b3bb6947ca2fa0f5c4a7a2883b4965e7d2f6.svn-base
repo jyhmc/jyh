@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 引入外部配置文件信息 -->
+	<!-- <properties resource="jdbc.properties"></properties> -->
+
+	<settings>
+		<!-- 开启驼峰自动映射 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	<!-- 指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean -->
+	<typeAliases>
+		<package name="sxay.yzzc.pojo" />
+	</typeAliases>
+
+
+<!-- 
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+
+
+	也可以指定一个包名，MyBatis 会在包名下面搜索需要的 映射器xml
+	<mappers>
+		<package name="sxay.yzzc.mapper" />
+	</mappers> -->
+
+</configuration>
+  
