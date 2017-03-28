@@ -17,65 +17,63 @@ Ext.define('yzzc.controller.MainCtrl', {
 	 * 菜单单击事件，切换菜单
 	 */
 	treeMenuClick : function(th, record, item, index, e, eOpts) {
-
-		// debugger;
-		Manager.create('System.controller.SystemCtlr');
+        
+		try{
+			Manager.create(record.data.url);
+		}catch (e) {
+			Ext.ux.Toast.msg("提示", "功能暂未实现！");
+		}
 
 	},
 
 	loadMenu : function(th, eOpts) {
 		var me = this;
 		var accordion = me.getMainmenutop();
-
+		var model= Ext.define('User', {
+		     extend: 'Ext.data.Model',
+		     fields: [
+		         {name: 'id', type: 'int'},
+		         {name: 'text',  type: 'string'},
+		         {name: 'leaf',   type: 'string'},
+		         {name: 'url',  type: 'string'}
+		     ]
+		 });
 		Ext.Ajax.request({
 			url : __ctxPath + "/tree",
 			success : function(response, options) {
 				var json = Ext.JSON.decode(response.responseText)
-				// debugger;
-				// alert(json);
-				for (var int = 0; int < 5; int++) {
 
+				for (var int = 0; int < json.result.length; int++) {
+                    //创建顶层菜单
 					var panel = Ext.create('Ext.panel.Panel', {
-						title : '系统管理',
+						title : json.result[int].text,
 						xtype : 'panel',
 						layout : {
 							type : 'fit'
 						},
 					});
-
-					for (var i = 0; i < 3; i++) {
-
-						var tree = Ext.create('Ext.tree.Panel', {
-							width : 200,
-							height : 150,
-							itemId : 'menuTree',
-							border : false,
-							rootVisible : false,
-							store : Ext.create('Ext.data.TreeStore', {
-								root : {
-									expanded : true,
-									children : [ {
-										text : "案件信息",
-										leaf : true
-									}, {
-										text : "基础信息",
-										leaf : true
-
-									} ]
-
-								}
-							})
-						});
-						panel.add(tree);
-					}
+                   //创建子菜单
+					var tree = Ext.create('Ext.tree.Panel', {
+						width : 200,
+						height : 150,
+						itemId : 'menuTree',
+						border : false,
+						rootVisible : false,
+						store : Ext.create('Ext.data.TreeStore', {
+						    model:model,
+							root : {
+								expanded : true,
+								children : json.result[int].children
+							}
+						})
+					});
+					panel.add(tree);
 					accordion.add(panel);
 				}
-
 			},
 			failure : function(response, options) {
 			}
 		});
-
 	},
 
 	// 事件注册

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import sxay.yzzc.mapper.DemoMapper;
 import sxay.yzzc.pojo.Demo;
+import sxay.yzzc.pojo.system.Menu;
 import sxay.yzzc.service.DemoService;
 import sxay.yzzc.util.TreeModel;
 
@@ -43,28 +44,12 @@ public class DemoController {
 	}
 	
 	
+	
 	@RequestMapping(value = "tree")
 	@ResponseBody
 	public Map<String, Object> tree() {
          Map<String, Object>  map=new HashMap<>();
-         
-         List<TreeModel>  list=new ArrayList<>();
-         for (int i = 1; i < 5; i++) {
-			TreeModel t=new TreeModel();
-			t.setId(i++);
-			t.setText("系统管理");
-			 List<TreeModel>  children=new ArrayList<>();
-		    for (int j = 6; j < 10; j++) {
-				 TreeModel  m=new TreeModel();
-				 m.setId(j);
-				 m.setText("wdww");
-				 children.add(m);
-				 t.setChildren(children);
-			}
-		    
-        	list.add(t); 
-		}
-         
+         List<Menu>  list=demoService.selectByPid();
          map.put("result", list);
 		return  map;
 	}

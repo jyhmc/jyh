@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/ext/resources/css/ext-all.css" />
+	<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/msg.css" />
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/ext-all-debug.js"></script>
 <script type="text/javascript">
@@ -52,6 +54,8 @@ var __ctxPath = "<%=request.getContextPath()%>";
 	src="<%=request.getContextPath()%>/views/Manager.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/views/app.js"></script>
+	<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/msg.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/ext-lang-zh_CN.js"></script>
 

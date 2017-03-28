@@ -11,24 +11,15 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-
-
+        
+        
 	<!--要扫描的包 -->
 	<context:component-scan base-package="sxay.yzzc.controller" />
-
 
 	<!-- don't handle the static resource -->
 	<mvc:default-servlet-handler />
 
-
-
 	<mvc:annotation-driven />
-
-	<!-- <mvc:resources mapping="/js/**" location="/js/" /> <mvc:resources mapping="/images/**" 
-		location="/images/" /> <mvc:resources mapping="/css/**" location="/css/" 
-		/> <mvc:resources mapping="/ext/**" location="/ext/" /> <mvc:resources mapping="/views/**" 
-		location="/views/**" /> -->
-
 
 	<!--视图解析器 -->
 	<bean
@@ -36,7 +27,6 @@
 		<property name="prefix" value="views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
 
 
 	<bean
@@ -56,11 +46,5 @@
 			</list>
 		</property>
 	</bean>
-
-
-
-
-
-
 
 </beans>

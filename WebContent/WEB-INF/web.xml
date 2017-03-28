@@ -5,12 +5,12 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>yzzc</display-name>
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
 
 
-    <!-- spring的编码过滤器 -->
+	<!-- spring的编码过滤器 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -25,8 +25,7 @@
 	</filter-mapping>
 
 
-
-    <!-- spring监听器配置 -->
+	<!-- spring监听器配置 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext.xml</param-value>
@@ -34,16 +33,15 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
-	
+
+
 	<!-- 防止Spring内存溢出监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
 	</listener>
 
 
-    
-    <!-- springmvc 配置 -->
+	<!-- springmvc 配置 -->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -61,6 +59,21 @@
 	</servlet-mapping>
 
 
+	<!-- 登錄過濾器，為了防止過濾靜態資源，放在springmvc后 -->
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>sxay.yzzc.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
+
+    
+    <!-- session過期時間，5分鐘 -->
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
 
 
 </web-app>

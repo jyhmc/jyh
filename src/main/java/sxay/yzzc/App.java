@@ -3,6 +3,7 @@ package sxay.yzzc;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -21,9 +22,10 @@ public class App {
 		System.out.println("Hello World!");
 
 		// mybatis 原生实例
-		mybatisDemo();
+		// mybatisDemo();
 		
-		
+		UUID uuid = UUID.randomUUID();
+		System.out.println(uuid);
 
 	}
 
@@ -48,14 +50,12 @@ public class App {
 
 		// 创建mapper实例
 		DemoMapper demoMapper = session.getMapper(DemoMapper.class);
-		
-		
-		
+
 		Demo demo = demoMapper.selectByid(1);
 
-	    List<Demo>  list=demoMapper.selectAll();  
-		
-		System.out.println(demo.getName()+"总记录数为："+list.size());
+		List<Demo> list = demoMapper.selectAll();
+
+		System.out.println(demo.getName() + "总记录数为：" + list.size());
 
 	}
 
