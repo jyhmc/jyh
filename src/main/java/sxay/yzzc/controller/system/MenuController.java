@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,15 +18,14 @@ public class MenuController {
 	@Autowired
 	private MenuService menuService;
 
-	
-	
 	@RequestMapping(value = "tree")
 	public Map<String, Object> tree() {
-         Map<String, Object>  map=new HashMap<>();
-         List<Menu>  list=menuService.selectByPid();
-         map.put("result", list);
-		return  map;
+		Map<String, Object> map = new HashMap<>();
+		List<Menu> list = menuService.selectByPid();
+		map.put("result", list);
+		return map;
 	}
+
 	/**
 	 * 根据父id查子节点
 	 * 
@@ -45,7 +43,7 @@ public class MenuController {
 	@RequestMapping("menuAdd")
 	public Map<String, Object> menuAdd(Menu menu) {
 		Map<String, Object> map = new HashMap<String, Object>();
-	    menuService.menuAdd(menu);
+		menuService.menuAdd(menu);
 		map.put("success", true);
 		return map;
 	}
@@ -53,7 +51,7 @@ public class MenuController {
 	@RequestMapping("menuDel")
 	public Map<String, Object> menuDel(int id) {
 		Map<String, Object> map = new HashMap<String, Object>();
-        menuService.menuDel(id);
+		menuService.menuDel(id);
 		map.put("success", true);
 		return map;
 	}
@@ -61,7 +59,7 @@ public class MenuController {
 	@RequestMapping("menuEdit")
 	public Map<String, Object> menuEdit(Menu menu) {
 		Map<String, Object> map = new HashMap<String, Object>();
-        menuService.menuEdit(menu);
+		menuService.menuEdit(menu);
 		map.put("success", true);
 		return map;
 	}
