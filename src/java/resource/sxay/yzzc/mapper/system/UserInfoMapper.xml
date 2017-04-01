@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sxay.yzzc.mapper.system.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="sxay.yzzc.pojo.system.UserInfo">
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="deptId" jdbcType="VARCHAR" property="deptid" />
+    <result column="dogID" jdbcType="VARCHAR" property="dogid" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="workYears" jdbcType="INTEGER" property="workyears" />
+    <result column="certificates" jdbcType="VARCHAR" property="certificates" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userId, userName, password, deptId, dogID, picture, name, age, sex, position, phone, 
+    education, workYears, certificates
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userInfo
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  
+  
+   <select id="selectByDeptId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userInfo
+    where deptId = #{deptId,jdbcType=INTEGER}
+  </select>
+  
+  
+   <select id="login" parameterType="sxay.yzzc.pojo.system.UserInfo" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where username = #{username,jdbcType=VARCHAR}  and  password = #{password,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from userInfo
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="sxay.yzzc.pojo.system.UserInfo">
+    insert into userInfo (userId, userName, password, 
+      deptId, dogID, picture, 
+      name, age, sex, position, 
+      phone, education, workYears, 
+      certificates)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{deptid,jdbcType=INTEGER}, #{dogid,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{workyears,jdbcType=INTEGER}, 
+      #{certificates,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sxay.yzzc.pojo.system.UserInfo">
+    insert into userInfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="deptid != null">
+        deptId,
+      </if>
+      <if test="dogid != null">
+        dogID,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="workyears != null">
+        workYears,
+      </if>
+      <if test="certificates != null">
+        certificates,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null">
+        #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="dogid != null">
+        #{dogid,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="workyears != null">
+        #{workyears,jdbcType=INTEGER},
+      </if>
+      <if test="certificates != null">
+        #{certificates,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="sxay.yzzc.pojo.system.UserInfo">
+    update userInfo
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="deptid != null">
+        deptId = #{deptid,jdbcType=VARCHAR},
+      </if>
+      <if test="dogid != null">
+        dogID = #{dogid,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="workyears != null">
+        workYears = #{workyears,jdbcType=INTEGER},
+      </if>
+      <if test="certificates != null">
+        certificates = #{certificates,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sxay.yzzc.pojo.system.UserInfo">
+    update userInfo
+    set userName = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      deptId = #{deptid,jdbcType=VARCHAR},
+      dogID = #{dogid,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      workYears = #{workyears,jdbcType=INTEGER},
+      certificates = #{certificates,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

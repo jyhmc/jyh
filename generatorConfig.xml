@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- <properties resource="conn.properties" /> -->
+
+	<classPathEntry
+		location="C:/Users/guojun/.m2/repository/com/microsoft/sqlserver/sqljdbc4/4.0/sqljdbc4-4.0.jar" />
+
+	<!-- 指定运行环境是mybatis3的版本 -->
+	<context id="testTables" targetRuntime="MyBatis3">
+		<!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+		<property name="autoDelimitKeywords" value="false" />
+
+		<!-- 生成的Java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+
+		<!-- 格式化java代码 -->
+		<property name="javaFormatter"
+			value="org.mybatis.generator.api.dom.DefaultJavaFormatter" />
+
+		<!-- 格式化XML代码 -->
+		<property name="xmlFormatter"
+			value="org.mybatis.generator.api.dom.DefaultXmlFormatter" />
+
+		<commentGenerator>
+			<!-- 是否取消注释 -->
+			<property name="suppressAllComments" value="true" />
+			<!-- 是否生成注释代时间戳 -->
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<!-- jdbc 连接信息 -->
+		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			connectionURL="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=yzzc"
+			userId="sa" password="1234_qwer">
+		</jdbcConnection>
+
+		<!-- 生成实体类映射文件 Begin -->
+
+		<!-- targetPackage指定模型在生成在哪个包，targetProject指定项目的src（将targetPackage替换成包名即可！） -->
+		<javaModelGenerator targetPackage="sxay.yzzc.pojo.system"
+			targetProject="yzzc/src/main/java">
+			<!-- 去除字段前后空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成映射文件的包名和位置（将targetPackage替换成包名即可！） -->
+		<sqlMapGenerator targetPackage="sxay.yzzc.mapper.system"
+			targetProject="yzzc/src/java/resource">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- 指定Mapper接口生成在哪个包（将targetPackage替换成包名即可！） -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="sxay.yzzc.mapper.system" targetProject="yzzc/src/main/java" />
+
+		<!-- 生成实体类（将tableName替换成表名、domainObjectName替换成实体类名即可！） -->
+		<!-- <table tableName="menu" domainObjectName="Menu"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+		</table>
+
+
+		<table tableName="role" domainObjectName="Role"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+		</table>
+
+
+		
+
+		<table tableName="user_role" domainObjectName="UserRole"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+		</table>
+
+
+		<table tableName="userInfo" domainObjectName="UserInfo"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+		</table>
+		 -->
+		
+		
+		<table tableName="role_menu" domainObjectName="RoleMenu"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+		</table>
+		<!-- 生成实体类映射文件 End -->
+
+	</context>
+</generatorConfiguration>
