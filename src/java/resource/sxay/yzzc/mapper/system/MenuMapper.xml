@@ -29,13 +29,15 @@
 		,text
 		,pid
 		,r.menuId as remark
-		FROM [yzzc].[dbo].[menu] m left join (
+		FROM
+		[yzzc].[dbo].[menu] m left join (
 		SELECT
 		roleId
 		,menuId
 		FROM role_menu
 		where roleId=#{roleid,jdbcType=INTEGER}) r on (m.id=r.menuId)
-		order by id
+		order by
+		id
 	</select>
 
 	<select id="selectByPid" parameterType="java.lang.Integer"
@@ -46,6 +48,14 @@
 		where pid = #{pid,jdbcType=INTEGER}
 	</select>
 
+	<select id="selectByRole" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from menu
+		where pid = #{pid,jdbcType=INTEGER} and id in (select menuid
+		from role_menu where roleId=#{roleid,jdbcType=INTEGER})
+	</select>
 
 
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -53,12 +63,15 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="sxay.yzzc.pojo.system.Menu">
-		insert into menu (id, text, pid,
+		insert into menu (id, text,
+		pid,
 		type, remark, url,
 		orders)
-		values (#{id,jdbcType=INTEGER}, #{text,jdbcType=VARCHAR},
+		values (#{id,jdbcType=INTEGER},
+		#{text,jdbcType=VARCHAR},
 		#{pid,jdbcType=INTEGER},
-		#{type,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+		#{type,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
+		#{url,jdbcType=VARCHAR},
 		#{orders,jdbcType=INTEGER})
 	</insert>
 	<insert id="insertSelective" parameterType="sxay.yzzc.pojo.system.Menu">
@@ -136,12 +149,16 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="sxay.yzzc.pojo.system.Menu">
 		update menu
-		set text = #{text,jdbcType=VARCHAR},
+		set
+		text = #{text,jdbcType=VARCHAR},
 		pid = #{pid,jdbcType=INTEGER},
-		type = #{type,jdbcType=INTEGER},
+		type =
+		#{type,jdbcType=INTEGER},
 		remark = #{remark,jdbcType=VARCHAR},
-		url = #{url,jdbcType=VARCHAR},
+		url =
+		#{url,jdbcType=VARCHAR},
 		orders = #{orders,jdbcType=INTEGER}
-		where id = #{id,jdbcType=INTEGER}
+		where id =
+		#{id,jdbcType=INTEGER}
 	</update>
 </mapper>

@@ -9,7 +9,7 @@ Ext.define('System.view.SystemRoleView', {
 	},
 	initComponent : function() {
 		var me = this;
-		var treestore = Ext.create("System.store.MenuTreeStore");
+		var treestore = Ext.create("System.store.MenuTreeByRoleStore");
 		var gridstore = Ext.create("System.store.RoleGridStore");
 		Ext.applyIf(me, {
 			items : [ {

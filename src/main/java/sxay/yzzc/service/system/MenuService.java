@@ -8,6 +8,8 @@ public interface MenuService {
 	
 	List<Menu>  selectMenu(int pid);
 	
+	List<Menu>  selectMenuByRole(int pid,int roleid);
+	
 	void  menuAdd(Menu menu);
 	void  menuEdit(Menu menu);
 	void  menuDel(int id);

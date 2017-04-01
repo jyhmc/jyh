@@ -1,6 +1,8 @@
 package sxay.yzzc.service.system.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,11 @@ import sxay.yzzc.service.system.MenuService;
 
 @Service
 @Transactional
-public class MenuServiceImpl implements   MenuService {
+public class MenuServiceImpl implements MenuService {
 
-	
-	@Autowired  private  MenuMapper menuMapper;
-	
+	@Autowired
+	private MenuMapper menuMapper;
+
 	@Override
 	public List<Menu> selectMenu(int pid) {
 		// TODO Auto-generated method stub
@@ -54,9 +56,14 @@ public class MenuServiceImpl implements   MenuService {
 		}
 		return list;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public List<Menu> selectMenuByRole(int pid, int roleid) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<>();
+		map.put("pid", pid);
+		map.put("roleid", roleid);
+		return menuMapper.selectByRole(map);
+	}
+
 }

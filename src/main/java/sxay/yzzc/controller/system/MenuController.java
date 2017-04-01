@@ -40,6 +40,14 @@ public class MenuController {
 		return map;
 	}
 
+	@RequestMapping("selectMenuByRole")
+	public Map<String, Object> selectMenuByRole(int node, int roleid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<Menu> list = menuService.selectMenuByRole(node, roleid);
+		map.put("result", list);
+		return map;
+	}
+
 	@RequestMapping("menuAdd")
 	public Map<String, Object> menuAdd(Menu menu) {
 		Map<String, Object> map = new HashMap<String, Object>();
