@@ -17,13 +17,9 @@ Ext.define('yzzc.controller.MainCtrl', {
 	 * 菜单单击事件，切换菜单
 	 */
 	treeMenuClick : function(th, record, item, index, e, eOpts) {
-        
-		try{
+            
 			Manager.create(record.data.url);
-		}catch (e) {
-			Ext.ux.Toast.msg("提示", "功能暂未实现！");
-		}
-
+		
 	},
 
 	loadMenu : function(th, eOpts) {
@@ -39,7 +35,7 @@ Ext.define('yzzc.controller.MainCtrl', {
 		     ]
 		 });
 		Ext.Ajax.request({
-			url : __ctxPath + "/tree",
+			url : __ctxPath + "/sys/tree",
 			success : function(response, options) {
 				var json = Ext.JSON.decode(response.responseText)
 
