@@ -79,6 +79,5 @@
 		</tx:attributes>
 	</tx:advice>
      
-     
-   
+ 
 </beans>

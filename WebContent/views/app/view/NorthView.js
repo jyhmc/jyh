@@ -11,8 +11,6 @@ Ext.define('yzzc.view.NorthView', {
 			/*collapsible : true,
 			collapsed : true,*/
 			height : 60
-			
-
 		});
 
 		this.callParent(arguments);
