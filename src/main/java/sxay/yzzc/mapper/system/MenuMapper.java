@@ -18,6 +18,8 @@ public interface MenuMapper {
 
 	int updateByPrimaryKey(Menu record);
 
+	List<Menu> selectByPidRole(Map<String, Object> map);
+	
 	List<Menu> selectByPid(int pid);
 
 	List<Menu> selectRoleMenu(int roleid);

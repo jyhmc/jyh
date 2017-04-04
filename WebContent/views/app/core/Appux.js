@@ -5,15 +5,14 @@ var PortalItem = function(a, b, c) {
 	this.column = b;
 	this.row = c;
 };
-var UserInfo = function(d, n, a, c, f, e, b, g) {
-	this.userNo= d;
+var UserInfo = function( n, a, c, f, e) {
+
 	this.userId = n;
 	this.fullname = a;
 	this.deptId = c;
 	this.depName = f;
 	this.rights = e||[];
-	this.portalConfig = b;
-	this.ownWorkShop = g;
+
 };
 var curUserInfo = null;
 function isGranted(a) {
@@ -26,11 +25,7 @@ function isGranted(a) {
 			return true;
 		}
 	}
-//	if (curUserInfo.rights.indexOf(a) != -1) {
-//		return true;
-//	}
 	return false;
-//	return true;
 }
 App.init = function() {
 //	Ext.QuickTips.init();

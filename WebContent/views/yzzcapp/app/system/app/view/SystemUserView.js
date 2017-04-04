@@ -152,7 +152,7 @@ Ext.define('System.view.SystemUserView', {
 									itemId : 'SysUserRef'
 								}, {
 									xtype : 'button',
-									text : '人員展示',
+									text : '人员展示',
 									itemId : 'SysUserShow'
 								}, {
 									xtype : 'button',

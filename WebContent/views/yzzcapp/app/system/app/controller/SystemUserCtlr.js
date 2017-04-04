@@ -105,12 +105,19 @@ Ext.define('System.controller.SystemUserCtlr', {
 		store.loadPage(1);
 
 	},
+	
 
 	onSysSysUserShowClick : function() {
 		var me = this;
-		var store = me.getUserGridpanel().getStore();
-		store.loadPage(1);
-
+		var selection = me.getUserGridpanel().getSelectionModel()
+				.getSelection();
+		if (selection.length != 1) {
+			Ext.ux.Toast.msg("提示", "请选择一条信息！");
+			return;
+		}
+		var win = Ext.create('System.view.SystemUserShowView');
+		win.down('form').loadRecord(selection[0]);
+		win.show();
 	},
 
 	onSysUserRoleClick : function() {
@@ -201,7 +208,6 @@ Ext.define('System.controller.SystemUserCtlr', {
 
 	onSysCancelRoleBtnClick : function(btn) {
 		var view = btn.ownerCt.ownerCt;
-
 		view.destroy();
 	},
 
@@ -220,7 +226,7 @@ Ext.define('System.controller.SystemUserCtlr', {
 
 	onSystemUserAddWinBlur : function() {
 		var me = this;
-	     debugger;
+		debugger;
 	},
 
 	onSystemUserEditWinBlur : function() {

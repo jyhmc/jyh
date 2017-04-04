@@ -14,6 +14,6 @@ public interface MenuService {
 	void  menuEdit(Menu menu);
 	void  menuDel(int id);
 
-	List<Menu> selectByPid();
+	List<Menu> selectByPid(int roleid);
 	
 }

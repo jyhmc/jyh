@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import sxay.yzzc.pojo.system.Menu;
+import sxay.yzzc.pojo.system.UserInfo;
 import sxay.yzzc.service.system.MenuService;
 
 @RestController
@@ -19,9 +22,10 @@ public class MenuController {
 	private MenuService menuService;
 
 	@RequestMapping(value = "tree")
-	public Map<String, Object> tree() {
+	public Map<String, Object> tree(HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<>();
-		List<Menu> list = menuService.selectByPid();
+	    UserInfo user=(UserInfo)request.getSession().getAttribute("user");
+		List<Menu> list = menuService.selectByPid(user.getUserid());
 		map.put("result", list);
 		return map;
 	}

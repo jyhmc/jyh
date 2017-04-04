@@ -49,7 +49,6 @@ public class DeptController {
 		}else{
 			 list=deptService.selectByPid(node);
 		}
-		
 		map.put("result", list);
 		return map;
 	}

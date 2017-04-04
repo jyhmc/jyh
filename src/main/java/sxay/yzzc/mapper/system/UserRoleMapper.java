@@ -17,4 +17,7 @@ public interface UserRoleMapper {
     
     int deleteByUserid(Integer id);
     
+    UserRole selectByUserid(Integer userid);
+    
+    
 }

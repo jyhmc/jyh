@@ -15,6 +15,14 @@
     from user_role
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+   <select id="selectByUserid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user_role
     where id = #{id,jdbcType=INTEGER}

@@ -1,6 +1,7 @@
 Ext.define('System.controller.SystemRoleCtlr', {
 	extend : 'Ext.app.Controller',
 	alias : 'controller.SystemRoleCtlr',
+	store : [ 'MenuTreeByRoleStore' ],
 	views : [ 'SystemRoleView' ],
 	refs : [ {
 		ref : 'RoleGridpanel',
@@ -119,6 +120,7 @@ Ext.define('System.controller.SystemRoleCtlr', {
 	onSysRoleGridpanelcellClick : function(th, td, cellIndex, record, tr,
 			rowIndex, e, eOpts) {
 		var me = this;
+		
 		var store = me.getRoleMenuTreepanel().getStore();
 		var roleid = record.get('id');
 		store.on("beforeload", function() {
@@ -133,22 +135,18 @@ Ext.define('System.controller.SystemRoleCtlr', {
 	onSysRoleMenuSaveClick : function(btn) {
 		var me = this;
 		var view = btn.ownerCt.ownerCt;
-		var selection = me.getSysRoleMenuTreeWin().getSelectionModel()
-				.getSelection();
 		var roleid = view.down('displayfield[itemId=sysRoleMenuroleid]')
 				.getValue();
-
-		if (selection.length < 1) {
+		var records = me.getSysRoleMenuTreeWin().getView().getChecked();
+		if (records.length < 1) {
 			Ext.ux.Toast.msg("提示", "请选择要分配的权限菜单");
 			return;
 		}
 
-		var records = me.getSysRoleMenuTreeWin().getView().getChecked();
 		var menus = [];
 		Ext.Array.each(records, function(rec) {
 			menus.push(rec.get('id'));
 		});
-
 		Ext.Msg.show({
 			title : '提示',
 			msg : '确认要操作选中的信息？',
@@ -168,7 +166,6 @@ Ext.define('System.controller.SystemRoleCtlr', {
 						},
 						failure : function(response, options) {
 							Ext.ux.Toast.msg("提示", "操作失败！");
-
 						}
 					});
 				}
@@ -242,7 +239,7 @@ Ext.define('System.controller.SystemRoleCtlr', {
 	onSysRoleEditrolenamechange : function() {
 		var me = this;
 		debugger;
-        
+
 	},
 
 	init : function(application) {

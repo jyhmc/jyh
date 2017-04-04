@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sxay.yzzc.mapper.system.MenuMapper;
+import sxay.yzzc.mapper.system.UserRoleMapper;
 import sxay.yzzc.pojo.system.Menu;
+import sxay.yzzc.pojo.system.UserRole;
 import sxay.yzzc.service.system.MenuService;
 
 @Service
@@ -18,6 +20,9 @@ public class MenuServiceImpl implements MenuService {
 
 	@Autowired
 	private MenuMapper menuMapper;
+	
+	@Autowired
+	private UserRoleMapper  userRoleMapper;
 
 	@Override
 	public List<Menu> selectMenu(int pid) {
@@ -44,11 +49,16 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public List<Menu> selectByPid() {
+	public List<Menu> selectByPid(int userid) {
 		// TODO Auto-generated method stub
-		List<Menu> list = menuMapper.selectByPid(0);
+		Map<String, Object> map = new HashMap<>();
+		int roleid= userRoleMapper.selectByUserid(userid).getRoleid();
+		map.put("pid", 0);
+		map.put("roleid",roleid);
+		List<Menu> list = menuMapper.selectByPidRole(map);
 		for (int i = 0; i < list.size(); i++) {
-			List<Menu> children = menuMapper.selectByPid(list.get(i).getId());
+			map.put("pid",list.get(i).getId() );
+			List<Menu> children = menuMapper.selectByPidRole(map);
 			for (int j = 0; j < children.size(); j++) {
 				children.get(j).setLeaf(true);
 			}

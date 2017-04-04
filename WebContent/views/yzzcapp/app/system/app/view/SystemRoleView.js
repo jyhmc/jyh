@@ -33,7 +33,7 @@ Ext.define('System.view.SystemRoleView', {
 						items : [ {
 							xtype : 'treepanel',
 							region : 'center',
-							rootVisible : false,
+							rootVisible : true,
 							itemId : 'RoleMenuTreepanel',
 							store : treestore
 
@@ -64,19 +64,19 @@ Ext.define('System.view.SystemRoleView', {
 								xtype : 'gridcolumn',
 								dataIndex : 'rolename',
 								flex : 1,
-								text : '角色名稱'
+								text : '角色名称'
 							}, {
 								xtype : 'gridcolumn',
 								dataIndex : 'remark',
 								flex : 1,
 								align : 'left',
-								text : '備註說明'
-							}],
+								text : '备注说明'
+							} ],
 							dockedItems : [ {
 								xtype : 'toolbar',
 								dock : 'top',
-								//ui: 'footer',
-								//defaults: {minWidth: minButtonWidth},
+								// ui: 'footer',
+								// defaults: {minWidth: minButtonWidth},
 								items : [ {
 									xtype : 'button',
 									text : '新   增',
@@ -95,9 +95,9 @@ Ext.define('System.view.SystemRoleView', {
 									itemId : 'SysRoleRef'
 								}, {
 									xtype : 'button',
-									text : '分配權限',
+									text : '分配权限',
 									itemId : 'SysRoleMenu'
-								}]
+								} ]
 							}, {
 								xtype : 'pagingtoolbar',
 								itemId : 'RoleGridPagingBar',

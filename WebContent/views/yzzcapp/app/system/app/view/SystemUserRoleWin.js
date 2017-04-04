@@ -65,19 +65,7 @@ Ext.define('System.view.SystemUserRoleWin', {
 					text : '角色备注'
 				} ],
 				viewConfig : {
-
-				},
-				dockedItems : [ {/*
-					xtype : 'pagingtoolbar',
-					dock : 'bottom',
-					width : 360,
-					displayInfo : true,
-					beforePageText : '第',
-					afterPageText : '页，共{0}页',
-					displayMsg : "当前显示从{0}至{1}，共{2}条记录",
-					emptyMsg : '当前没有记录',
-					store : gridStore
-				*/} ]
+				}
 			  }
 			]
 		});
