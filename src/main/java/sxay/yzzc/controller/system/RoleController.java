@@ -4,10 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import sxay.yzzc.pojo.system.Role;
 import sxay.yzzc.service.system.RoleService;
@@ -24,19 +29,30 @@ public class RoleController {
 	 * 
 	 * @param pid
 	 * @return
+	 * @throws JsonProcessingException
 	 */
-	@RequestMapping("selectRole")
-	public Map<String, Object> selectRole() {
+	@RequestMapping(value = "selectRole", produces = "application/json; charset=UTF-8")
+	public String selectRole(String callback) throws JsonProcessingException {
 		Map<String, Object> map = new HashMap<String, Object>();
-	    List<Role>  list=roleService.selectRole();
+		List<Role> list = roleService.selectRole();
 		map.put("result", list);
-		return map;
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+		String json = mapper.writeValueAsString(map);
+		StringBuffer str = new StringBuffer();
+		if (callback != null) {
+			str.append(callback);
+			str.append("(");
+			str.append(json);
+			str.append(")");
+		}
+		return str.toString();
 	}
 
 	@RequestMapping("roleAdd")
 	public Map<String, Object> roleAdd(Role role) {
 		Map<String, Object> map = new HashMap<String, Object>();
-	    roleService.roleAdd(role);
+		roleService.roleAdd(role);
 		map.put("success", true);
 		return map;
 	}
@@ -44,7 +60,7 @@ public class RoleController {
 	@RequestMapping("roleDel")
 	public Map<String, Object> roleDel(int id) {
 		Map<String, Object> map = new HashMap<String, Object>();
-        roleService.roleDel(id);
+		roleService.roleDel(id);
 		map.put("success", true);
 		return map;
 	}
@@ -52,7 +68,7 @@ public class RoleController {
 	@RequestMapping("roleEdit")
 	public Map<String, Object> roleEdit(Role role) {
 		Map<String, Object> map = new HashMap<String, Object>();
-        roleService.roleEdit(role);
+		roleService.roleEdit(role);
 		map.put("success", true);
 		return map;
 	}

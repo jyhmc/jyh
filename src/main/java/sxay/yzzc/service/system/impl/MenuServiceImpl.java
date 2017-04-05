@@ -20,9 +20,9 @@ public class MenuServiceImpl implements MenuService {
 
 	@Autowired
 	private MenuMapper menuMapper;
-	
+
 	@Autowired
-	private UserRoleMapper  userRoleMapper;
+	private UserRoleMapper userRoleMapper;
 
 	@Override
 	public List<Menu> selectMenu(int pid) {
@@ -52,12 +52,12 @@ public class MenuServiceImpl implements MenuService {
 	public List<Menu> selectByPid(int userid) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<>();
-		int roleid= userRoleMapper.selectByUserid(userid).getRoleid();
+		int roleid = userRoleMapper.selectByUserid(userid).getRoleid();
 		map.put("pid", 0);
-		map.put("roleid",roleid);
+		map.put("roleid", roleid);
 		List<Menu> list = menuMapper.selectByPidRole(map);
 		for (int i = 0; i < list.size(); i++) {
-			map.put("pid",list.get(i).getId() );
+			map.put("pid", list.get(i).getId());
 			List<Menu> children = menuMapper.selectByPidRole(map);
 			for (int j = 0; j < children.size(); j++) {
 				children.get(j).setLeaf(true);
@@ -73,7 +73,7 @@ public class MenuServiceImpl implements MenuService {
 		Map<String, Object> map = new HashMap<>();
 		map.put("pid", pid);
 		map.put("roleid", roleid);
-		return menuMapper.selectByRole(map);
+		return menuMapper.selectByPidRole(map);
 	}
 
 }

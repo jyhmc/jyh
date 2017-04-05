@@ -3,7 +3,7 @@ Ext.define('System.controller.SystemDeptCtlr', {
 	alias : 'controller.SystemDeptCtlr',
 	store : [ 'DeptGridStore' ],
 	views : [ 'SystemDeptView' ],
-	refs  : [ {
+	refs : [ {
 		ref : 'DeptGridpanel',
 		selector : 'SystemDeptView gridpanel[itemId=DeptGridpanel]'
 	} ],
@@ -11,11 +11,11 @@ Ext.define('System.controller.SystemDeptCtlr', {
 	onDeptTreepanelItemClick : function(is, record, item, index, e, eOpts) {
 		var me = this;
 		var store = me.getDeptGridpanel().getStore();
-		var node=record.data.id;
+		var node = record.data.id;
 		store.on("beforeload", function() {
 			Ext.apply(store.proxy.extraParams, {
-						'node' : node
-					});
+				'node' : node
+			});
 		});
 		store.loadPage(1);
 	},

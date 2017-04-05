@@ -13,8 +13,9 @@ Ext.define('System.store.RoleGridStore', {
             model: 'System.model.RoleGridModel',
             autoLoad:true,
             proxy: {
-                type:'ajax',
-                url :__ctxPath + '/sys/selectRole',
+                type:'jsonp',
+                //callbackKey: "jsonPCallback",
+                url : 'http://192.168.1.106:8080/yzzc/sys/selectRole',
                 reader:{
                 	type:'json',
                 	root:'result'

@@ -21,7 +21,7 @@ public class DeptServiceImpl implements  DeptService{
 	@Override
 	public List<Dept> selectByPid(int pid) {
 		// TODO Auto-generated method stub
-		
+	    
 		return deptMapper.selectByPid(pid);
 	}
 
