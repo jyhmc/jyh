@@ -1,6 +1,4 @@
-Ext
-		.define(
-				'System.view.SystemUserShowView',
+Ext.define('System.view.SystemUserShowView',
 				{
 					extend : 'Ext.window.Window',
 					itemId : 'SystemUserShowView',
@@ -49,8 +47,8 @@ Ext
 																items : [
 																		{
 																			xtype : 'image',
-																			itemId : 'personImage',
-																			src : '',
+																			itemId : 'UserImage',
+																			src : __ctxPath+'/images',
 																			flex : 3,
 																			margin : '5 5 5 5'
 																		},
@@ -60,7 +58,7 @@ Ext
 																			border : false,
 																			fileSize : 1024 * 1024 * 2,// 限制文件大小
 																			uploadUrl : __ctxPath
-																					+ "/base/uploadPubEmployeeAction.do",
+																					+ "/upload",
 																			filePostName : 'file', // 后台接收参数
 																			file_types : "*.jpg;*.gif;*.jpeg;*.bmp;*.png"// 可上传文件类型
 																		} ]
@@ -75,7 +73,9 @@ Ext
 																		{
 																			xtype : 'textfield',
 																			margin : '5 5 5 5',
+																			itemId : 'UserDetailFormId',
 																			fieldLabel : 'id',
+																			hidden:true,
 																			name : 'userid',
 																			readOnly : true
 																		},

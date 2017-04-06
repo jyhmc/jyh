@@ -2,7 +2,9 @@
  * If all uploads succeed: {"success":true} If an upload fails:
  * {"success":false,"error":"Reason for error!"}
  */
-Ext.define('UploadButtonPanel',
+Ext
+		.define(
+				'UploadButtonPanel',
 				{
 					extend : 'Ext.form.Panel',
 					alias : 'widget.uploadButtonPanel',
@@ -161,9 +163,9 @@ Ext.define('UploadButtonPanel',
 					},
 					onUploadError : function(file, errorCode, message) {
 						var me = this.customSettings.scope_handler;
-						var tip = me.tip;
-						// tip(errorCode+message);
-						tip('上传异常，代码:' + errorCode + "信息:" + message);
+						//var tip = me.tip;
+						 //tip(errorCode+message);
+						//tip('上传异常，代码:' + errorCode + "信息:" + message);
 					},
 					tip : function(msg) {
 						Ext.Msg.show({

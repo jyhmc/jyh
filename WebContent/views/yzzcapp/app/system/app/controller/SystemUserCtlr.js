@@ -15,6 +15,13 @@ Ext.define('System.controller.SystemUserCtlr', {
 		ref : 'SysUserRoleUserid',
 		selector : 'SystemUserRoleWin displayfield[itemId=SysUserRoleUserid]'
 	}
+	, {
+		ref : 'SysUserDetailFormId',
+		selector : 'SystemUserShowView textfield[itemId=UserDetailFormId]'
+	}, {
+		ref : 'UserImage',
+		selector : 'SystemUserShowView image[itemId=UserImage]'
+	}, 
 
 	],
 
@@ -116,7 +123,7 @@ Ext.define('System.controller.SystemUserCtlr', {
 			return;
 		}
 		var win = Ext.create('System.view.SystemUserShowView');
-		win.down('form').loadRecord(selection[0]);
+		win.down('form[itemId=UserDetailForm]').loadRecord(selection[0]);
 		win.show();
 	},
 
@@ -233,6 +240,23 @@ Ext.define('System.controller.SystemUserCtlr', {
 		var me = this;
 		debugger;
 	},
+	
+	onUploadSuccess : function(obj, file, serverData) {
+		var me = this;
+		var resObj = Ext.JSON.decode(serverData);
+		if (resObj.success) {
+			me.getUserImage().setSrc(__ctxPath + '/images?filename=' + resObj.filename);
+		}
+	},
+	
+	onSetPostParams : function(obj) {
+		var me = this;
+		obj.setPostParams({
+					userid : me.getSysUserDetailFormId().getValue()
+				});
+		return true;
+	},
+	
 
 	init : function(application) {
 		this.control({
@@ -280,7 +304,11 @@ Ext.define('System.controller.SystemUserCtlr', {
 			},
 			"SystemUserEditWin  textfield[itemId=UserEditusername]" : {
 				blur : this.onSystemUserEditWinBlur
-			}
+			},
+			"SystemUserShowView uploadButtonPanel[itemId=PhotoUploadButton]" : {
+				setPostParams : this.onSetPostParams,
+				onUploadSuccess : this.onUploadSuccess
+			},
 
 		});
 	}

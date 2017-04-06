@@ -40,6 +40,7 @@ public class RoleController {
 		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		String json = mapper.writeValueAsString(map);
 		StringBuffer str = new StringBuffer();
+		// jsonp跨域调用方式
 		if (callback != null) {
 			str.append(callback);
 			str.append("(");
