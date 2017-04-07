@@ -46,6 +46,44 @@ Ext.define('ManagerConfig', {
 		pathname : 'System',
 		controller : [ 'System.controller.SystemMenuCtlr' ],
 		views : [ 'SystemMenuView' ]
+	},
+	
+	
+	'Basedata.controller.BasedataYsqyCtlr' : { 
+		name : '运输企业',
+		creater : 'jyh',
+		path : './app/basedata/app',
+		pathname : 'Basedata',
+		controller : [ 'Basedata.controller.BasedataYsqyCtlr' ],
+		views : [ 'BasedataYsqyView' ]
+	},
+	
+	'Basedata.controller.BasedataCyryCtlr' : { 
+		name : '從業人員',
+		creater : 'jyh',
+		path : './app/basedata/app',
+		pathname : 'Basedata',
+		controller : [ 'Basedata.controller.BasedataCyryCtlr' ],
+		views : [ 'BasedataCyryView' ]
+	},
+	
+	'Basedata.controller.BasedataYtqyCtlr' : { 
+		name : '源頭企業',
+		creater : 'jyh',
+		path : './app/basedata/app',
+		pathname : 'Basedata',
+		controller : [ 'Basedata.controller.BasedataYtqyCtlr' ],
+		views : [ 'BasedataYtqyView' ]
+	},
+	
+	'Basedata.controller.BasedataYyclCtlr' : { 
+		name : '貨運車輛',
+		creater : 'jyh',
+		path : './app/basedata/app',
+		pathname : 'Basedata',
+		controller : [ 'Basedata.controller.BasedataYyclCtlr' ],
+		views : [ 'BasedataYyclView' ]
 	}
+	
 
 });
