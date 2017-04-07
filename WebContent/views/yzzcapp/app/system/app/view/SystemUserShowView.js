@@ -48,7 +48,7 @@ Ext.define('System.view.SystemUserShowView',
 																		{
 																			xtype : 'image',
 																			itemId : 'UserImage',
-																			src : __ctxPath+'/images',
+																			src : '',
 																			flex : 3,
 																			margin : '5 5 5 5'
 																		},

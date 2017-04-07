@@ -120,7 +120,7 @@ Ext.define('System.controller.SystemRoleCtlr', {
 	onSysRoleGridpanelcellClick : function(th, td, cellIndex, record, tr,
 			rowIndex, e, eOpts) {
 		var me = this;
-		
+
 		var store = me.getRoleMenuTreepanel().getStore();
 		var roleid = record.get('id');
 		store.on("beforeload", function() {

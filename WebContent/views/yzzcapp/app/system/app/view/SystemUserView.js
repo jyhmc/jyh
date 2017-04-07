@@ -163,7 +163,7 @@ Ext.define('System.view.SystemUserView', {
 									text : '密码重置',
 									hidden:true,
 									itemId : 'SysUserResetPassword'
-								} ]
+								}]
 							}, {
 								xtype : 'pagingtoolbar',
 								itemId : 'UserGridPagingBar',
