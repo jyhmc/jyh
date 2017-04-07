@@ -4,7 +4,7 @@ Ext.define('Basedata.controller.BasedataCyryCtlr', {
 	views : [ 'BasedataCyryView' ],
 	refs : [ {
 		ref : 'DeptGridpanel',
-		selector : 'SystemDeptView gridpanel[itemId=DeptGridpanel]'
+		selector : 'BasedataCyryView gridpanel[itemId=DeptGridpanel]'
 	} ],
 
 	onDeptTreepanelItemClick : function(is, record, item, index, e, eOpts) {
@@ -21,7 +21,7 @@ Ext.define('Basedata.controller.BasedataCyryCtlr', {
 
 	init : function(application) {
 		this.control({
-			"SystemDeptView  treepanel[itemId=DeptTreepanel]" : {
+			"BasedataCyryView  treepanel[itemId=DeptTreepanel]" : {
 				itemclick : this.onDeptTreepanelItemClick
 			}
 		});

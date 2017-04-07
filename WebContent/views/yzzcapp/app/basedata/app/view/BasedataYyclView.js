@@ -66,18 +66,35 @@ Ext.define('Basedata.view.BasedataYyclView', {
 										flex : 1,
 										text : '组织机构代码'
 									}],
-									dockedItems: [{/*
+									dockedItems: [{
 									    xtype: 'toolbar',
 									    dock: 'top',
 									    //ui: 'footer',
 									  //  defaults: {minWidth: minButtonWidth},
 									    items: [
-									        { xtype: 'button', text: '新   增' },
-									        { xtype: 'button', text: '修   改' },
-									        { xtype: 'button', text: '删   除' },
-									        { xtype: 'button', text: '刷   新' }
+									    	{
+									            xtype: 'textfield',
+									            name: 'name',
+									            fieldLabel: 'Name',
+									            allowBlank: false  // requires a non-empty value
+									        }, {
+									            xtype: 'textfield',
+									            name: 'email',
+									            fieldLabel: 'Email Address',
+									            vtype: 'email'  // requires value to be a valid email address format
+									        },{
+									            xtype: 'textfield',
+									            name: 'name',
+									            fieldLabel: 'Name',
+									            allowBlank: false  // requires a non-empty value
+									        }, {
+									            xtype: 'textfield',
+									            name: 'email',
+									            fieldLabel: 'Email Address',
+									            vtype: 'email'  // requires value to be a valid email address format
+									        }
 									    ]
-									*/}, {
+									}, {
 										xtype : 'pagingtoolbar',
 										itemId : 'DeptGridPagingBar',
 										store : gridstore,
