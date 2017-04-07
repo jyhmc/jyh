@@ -13,9 +13,7 @@ Ext.onReady(function() {
 	var cpathfrnt = cpath[cpath.length - 1];
 	var ManagerConfig = Ext.create('ManagerConfig');/* 主控制器 */
 	for ( var ctl in ManagerConfig) {
-       
 		var path = ManagerConfig[ctl].path;
-
 		if (ManagerConfig[ctl].controller && ManagerConfig[ctl].path) {
 			var nm = "paths." + ManagerConfig[ctl].pathname + '="/' + cpathfrnt
 					+ '/views/yzzcapp' + path.substring(1) + '"';
@@ -23,7 +21,6 @@ Ext.onReady(function() {
 		}
 	}
 	
-
 	var controllers = [ 'MainCtrl' ];
 	Ext.application({
 		name : 'yzzc',
