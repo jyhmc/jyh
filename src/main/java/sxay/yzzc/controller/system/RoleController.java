@@ -46,6 +46,8 @@ public class RoleController {
 			str.append("(");
 			str.append(json);
 			str.append(")");
+		}else{
+			str.append(json);
 		}
 		return str.toString();
 	}
