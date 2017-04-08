@@ -32,8 +32,6 @@
 		</environment>
 	</environments>
 
-
-
 	也可以指定一个包名，MyBatis 会在包名下面搜索需要的 映射器xml
 	<mappers>
 		<package name="sxay.yzzc.mapper" />
