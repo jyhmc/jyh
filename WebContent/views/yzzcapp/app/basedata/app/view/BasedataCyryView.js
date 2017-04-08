@@ -46,7 +46,7 @@ Ext.define('Basedata.view.BasedataCyryView', {
 						layout : {
 							type : 'border'
 						},
-						items : [{
+						items : [{/*
 									xtype : 'toolbar',
 									layout : 'table',
 									border:false,
@@ -77,7 +77,7 @@ Ext.define('Basedata.view.BasedataCyryView', {
 												text : '清空',
 												itemId : 'button-clear'
 											}]
-								}, {
+								*/}, {
 									xtype : 'gridpanel',
 									border:false,
 									//store : store,
@@ -149,19 +149,37 @@ Ext.define('Basedata.view.BasedataCyryView', {
 									dockedItems : [{
 										xtype : 'toolbar',
 										dock : 'top',
-										items : [/*{
-													xtype : 'button',
-													itemId : 'product_add',
-													text : '增  加'
-												}, {
-													xtype : 'button',
-													itemId : 'product_edit',
-													text : '修  改'
-						
-												}					
-												*/],
-										dock : 'top'
-
+										// ui: 'footer',
+										// defaults: {minWidth: minButtonWidth},
+										items : [ {
+											xtype : 'textfield',
+											name : 'name',
+											fieldLabel : 'Name',
+											labelWidth : 80,
+											allowBlank : false
+										}, {
+											xtype : 'textfield',
+											name : 'email',
+											fieldLabel : 'Email ',
+											labelWidth : 80,
+											vtype : 'email' 
+										}, {
+											xtype : 'textfield',
+											name : 'name',
+											labelWidth : 80,
+											fieldLabel : 'Name',
+											allowBlank : false
+										} , {
+											xtype : 'button',
+											name : 'name',
+											text: '查  询',
+											allowBlank : false
+										} , {
+											xtype : 'button',
+											name : 'name',
+											text: '重  置',
+											allowBlank : false
+										}]
 									}, {
 										xtype : 'pagingtoolbar',
 										itemId : 'productsPagingBar',

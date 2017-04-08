@@ -75,18 +75,31 @@ Ext.define('Basedata.view.BasedataYyclView', {
 									xtype : 'textfield',
 									name : 'name',
 									fieldLabel : 'Name',
+									labelWidth : 80,
 									allowBlank : false
 								}, {
 									xtype : 'textfield',
 									name : 'email',
-									fieldLabel : 'Email Address',
+									fieldLabel : 'Email ',
+									labelWidth : 80,
 									vtype : 'email' 
 								}, {
 									xtype : 'textfield',
 									name : 'name',
+									labelWidth : 80,
 									fieldLabel : 'Name',
 									allowBlank : false
-								} ]
+								} , {
+									xtype : 'button',
+									name : 'name',
+									text: '查  询',
+									allowBlank : false
+								} , {
+									xtype : 'button',
+									name : 'name',
+									text: '重  置',
+									allowBlank : false
+								}]
 							}, {
 								xtype : 'pagingtoolbar',
 								itemId : 'DeptGridPagingBar',

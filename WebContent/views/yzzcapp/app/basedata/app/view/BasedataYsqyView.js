@@ -67,28 +67,39 @@ Ext.define('Basedata.view.BasedataYsqyView', {
 										text : '组织机构代码'
 									}],
 									dockedItems: [{
-									    xtype: 'toolbar',
-									    dock: 'top',
-									    //ui: 'footer',
-									  //  defaults: {minWidth: minButtonWidth},
-									    items: [
-									    	{
-									            xtype: 'textfield',
-									            name: 'name',
-									            fieldLabel: 'Name',
-									            allowBlank: false  // requires a non-empty value
-									        }, {
-									            xtype: 'textfield',
-									            name: 'email',
-									            fieldLabel: 'Email Address',
-									            vtype: 'email'  // requires value to be a valid email address format
-									        },{
-									            xtype: 'textfield',
-									            name: 'name',
-									            fieldLabel: 'Name',
-									            allowBlank: false  // requires a non-empty value
-									        }
-									    ]
+										xtype : 'toolbar',
+										dock : 'top',
+										// ui: 'footer',
+										// defaults: {minWidth: minButtonWidth},
+										items : [ {
+											xtype : 'textfield',
+											name : 'name',
+											fieldLabel : 'Name',
+											labelWidth : 80,
+											allowBlank : false
+										}, {
+											xtype : 'textfield',
+											name : 'email',
+											fieldLabel : 'Email ',
+											labelWidth : 80,
+											vtype : 'email' 
+										}, {
+											xtype : 'textfield',
+											name : 'name',
+											labelWidth : 80,
+											fieldLabel : 'Name',
+											allowBlank : false
+										} , {
+											xtype : 'button',
+											name : 'name',
+											text: '查  询',
+											allowBlank : false
+										} , {
+											xtype : 'button',
+											name : 'name',
+											text: '重  置',
+											allowBlank : false
+										}]
 									}, {
 										xtype : 'pagingtoolbar',
 										itemId : 'DeptGridPagingBar',
