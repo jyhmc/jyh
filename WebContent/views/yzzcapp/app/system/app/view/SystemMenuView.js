@@ -28,7 +28,7 @@ Ext.define('System.view.SystemMenuView', {
 					items : [ {
 						xtype : 'container',
 						region : 'west',
-						width : 300,
+						width : 250,
 						layout : 'border',
 						items : [ {
 							xtype : 'treepanel',

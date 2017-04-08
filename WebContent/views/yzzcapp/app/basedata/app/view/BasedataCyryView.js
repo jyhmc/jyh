@@ -28,7 +28,7 @@ Ext.define('Basedata.view.BasedataCyryView', {
 					items : [{
 						xtype : 'container',
 						region : 'west',
-						width : 300,
+						width : 250,
 						layout : 'border',
 						items : [{
 							xtype : 'treepanel',
@@ -41,66 +41,135 @@ Ext.define('Basedata.view.BasedataCyryView', {
 					}, {
 						xtype : 'container',
 						region : 'center',
-						layout : 'border',
+						border:false,
+						flex : 5,
+						layout : {
+							type : 'border'
+						},
 						items : [{
-							xtype : 'gridpanel',
-							region : 'center',
-							selType : 'checkboxmodel',
-							itemId : 'DeptGridpanel',
-							store : gridstore,
-							columns : [{
-										xtype : 'rownumberer',
-										align : 'left',
-										minWidth : 50,
-										text : '序号'
-									},  {
-										xtype : 'gridcolumn',
-										dataIndex : 'text',
-										flex : 1,
-										align : 'left',
-										text : '组织名称'
-									}, {
-										xtype : 'gridcolumn',
-										dataIndex : 'number',
-										flex : 1,
-										text : '组织机构代码'
-									}],
-									dockedItems: [{
-									    xtype: 'toolbar',
-									    dock: 'top',
-									    //ui: 'footer',
-									  //  defaults: {minWidth: minButtonWidth},
-									    items: [
-									    	{
-									            xtype: 'textfield',
-									            name: 'name',
-									            fieldLabel: 'Name',
-									            allowBlank: false  // requires a non-empty value
-									        }, {
-									            xtype: 'textfield',
-									            name: 'email',
-									            fieldLabel: 'Email Address',
-									            vtype: 'email'  // requires value to be a valid email address format
-									        },{
-									            xtype: 'textfield',
-									            name: 'name',
-									            fieldLabel: 'Name',
-									            allowBlank: false  // requires a non-empty value
-									        }, {
-									            xtype: 'textfield',
-									            name: 'email',
-									            fieldLabel: 'Email Address',
-									            vtype: 'email'  // requires value to be a valid email address format
-									        }
-									    ]
+									xtype : 'toolbar',
+									layout : 'table',
+									border:false,
+									region: 'north',
+								//	bodyPadding : 10,
+									height: 33,
+									items : [{
+												xtype : 'textfield',
+												width : 220,
+												fieldLabel : '产品名称',
+												dataIndex : 'productName',
+												itemId : 'productName',
+												labelWidth : 70
+											}, {
+												xtype : 'textfield',
+												width : 220,
+												fieldLabel : '产品编码',
+												dataIndex : 'productCode',
+												itemId : 'productCode',
+												labelWidth : 70
+											},  {
+												xtype : 'button',
+												itemId : 'btnProduct_search',
+												text : '查询'
+												
+											}, {
+												xtype : 'button',
+												text : '清空',
+												itemId : 'button-clear'
+											}]
+								}, {
+									xtype : 'gridpanel',
+									border:false,
+									//store : store,
+									itemId : 'productListGrid',
+									selType : 'checkboxmodel',
+									autoScroll : true,
+									region: 'center',
+									columns : [
+										{
+											xtype : 'rownumberer',
+											width : 70,
+											text : '序号'
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'productCode',
+											text : '产品编码',
+											flex: 1,
+											renderer:function(value){
+												return value.link("#");
+											}
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'productName',
+											flex: 1,
+											text : '产品名称'
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'productVersion',
+											flex: 1,
+											hidden:true,
+											text : ' 版本'
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'productStyle',
+											flex: 1,
+												hidden:true,
+											text : '规格型号'
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'assetCode',
+											flex: 1,
+												hidden:true,
+											text : '资产编号'
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'productSymbol',
+											flex: 1,
+											text : '产品代号 '
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'pictureNo',
+											flex: 1,
+											hidden:true,
+											text : '图号'
+										}, 
+										{
+											xtype : 'gridcolumn',
+											dataIndex : 'remark',
+											flex: 1,
+											text : '备注'
+										}],
+									dockedItems : [{
+										xtype : 'toolbar',
+										dock : 'top',
+										items : [/*{
+													xtype : 'button',
+													itemId : 'product_add',
+													text : '增  加'
+												}, {
+													xtype : 'button',
+													itemId : 'product_edit',
+													text : '修  改'
+						
+												}					
+												*/],
+										dock : 'top'
+
 									}, {
 										xtype : 'pagingtoolbar',
-										itemId : 'DeptGridPagingBar',
-										store : gridstore,
+										itemId : 'productsPagingBar',
+										//store : store,
 										dock : 'bottom',
 										displayInfo : true
 									}]
-						}]
+								}]
 					}]
 				}]
 			}]

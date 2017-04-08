@@ -34,31 +34,46 @@
 
 		<!-- jdbc 连接信息 -->
 		<jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-			connectionURL="jdbc:sqlserver://127.0.0.1:1433;DatabaseName=yzzc"
-			userId="sa" password="1234_qwer">
+			connectionURL="jdbc:sqlserver://192.168.1.3:1433;DatabaseName=yzzc"
+			userId="sa" password="anyu!123">
 		</jdbcConnection>
 
 		<!-- 生成实体类映射文件 Begin -->
 
 		<!-- targetPackage指定模型在生成在哪个包，targetProject指定项目的src（将targetPackage替换成包名即可！） -->
-		<javaModelGenerator targetPackage="sxay.yzzc.pojo.system"
+		<javaModelGenerator targetPackage="sxay.yzzc.pojo.basedata"
 			targetProject="yzzc/src/main/java">
 			<!-- 去除字段前后空格 -->
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<!-- 生成映射文件的包名和位置（将targetPackage替换成包名即可！） -->
-		<sqlMapGenerator targetPackage="sxay.yzzc.mapper.system"
+		<sqlMapGenerator targetPackage="sxay.yzzc.mapper.basedata"
 			targetProject="yzzc/src/java/resource">
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 
 		<!-- 指定Mapper接口生成在哪个包（将targetPackage替换成包名即可！） -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="sxay.yzzc.mapper.system" targetProject="yzzc/src/main/java" />
+			targetPackage="sxay.yzzc.mapper.basedata" targetProject="yzzc/src/main/java" />
 
 		<!-- 生成实体类（将tableName替换成表名、domainObjectName替换成实体类名即可！） -->
-		<!-- <table tableName="menu" domainObjectName="Menu"
+		<!-- <table tableName="menu" domainObjectName="Menu" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false"> <property name="ignoreQualifiersAtRuntime" 
+			value="true" /> </table> <table tableName="role" domainObjectName="Role" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false"> <property name="ignoreQualifiersAtRuntime" 
+			value="true" /> </table> <table tableName="user_role" domainObjectName="UserRole" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false"> <property name="ignoreQualifiersAtRuntime" 
+			value="true" /> </table> <table tableName="userInfo" domainObjectName="UserInfo" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false"> <property name="ignoreQualifiersAtRuntime" 
+			value="true" /> </table> -->
+
+
+		<table tableName="cyryInfo" domainObjectName="CyryInfo"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
@@ -66,39 +81,41 @@
 		</table>
 
 
-		<table tableName="role" domainObjectName="Role"
+		<table tableName="ytqyInfo" domainObjectName="YtqyInfo"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="ignoreQualifiersAtRuntime" value="true" />
 		</table>
 
-
-		
-
-		<table tableName="user_role" domainObjectName="UserRole"
+		<table tableName="sourcedata" domainObjectName="SourceData"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="ignoreQualifiersAtRuntime" value="true" />
 		</table>
 
+		<table tableName="station" domainObjectName="Station"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+		</table>
 
-		<table tableName="userInfo" domainObjectName="UserInfo"
+		<table tableName="ysqyInfo" domainObjectName="YsqyInfo"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="ignoreQualifiersAtRuntime" value="true" />
 		</table>
-		 -->
-		
-		
-		<table tableName="role_menu" domainObjectName="RoleMenu"
+
+		<table tableName="yyclInfo" domainObjectName="YyclInfo"
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false">
 			<property name="ignoreQualifiersAtRuntime" value="true" />
 		</table>
+
 		<!-- 生成实体类映射文件 End -->
 
 	</context>

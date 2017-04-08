@@ -8,7 +8,7 @@ Ext.define('yzzc.view.MenuView', {
 			collapsible : true,
 			title : '功能菜单',
 			split : true,
-			width : 250,
+			width : 230,
 			layout : {
 				  titleCollapse : true, 
 				  animate : true,

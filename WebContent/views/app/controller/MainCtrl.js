@@ -79,7 +79,7 @@ Ext.define('yzzc.controller.MainCtrl', {
 				itemclick : this.treeMenuClick
 			},
 			'#mainMenutop' : {
-				afterrender : this.loadMenu
+				beforerender : this.loadMenu
 			}
 
 		});
@@ -87,6 +87,9 @@ Ext.define('yzzc.controller.MainCtrl', {
 
 	// 页面渲染完成后执行的事件，设置所有ajax请求的方式为 post
 	onLaunch : function() {
+		
+		//this.loadMenu();
+		
 		Ext.override(Ext.data.proxy.Ajax, {
 			actionMethods : {
 				create : 'POST',

@@ -28,7 +28,7 @@ Ext.define('System.view.SystemRoleView', {
 					items : [ {
 						xtype : 'container',
 						region : 'east',
-						width : 300,
+						width : 250,
 						layout : 'border',
 						items : [ {
 							xtype : 'treepanel',

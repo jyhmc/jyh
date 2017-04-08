@@ -28,7 +28,7 @@ Ext.define('Basedata.view.BasedataYtqyView', {
 					items : [{
 						xtype : 'container',
 						region : 'west',
-						width : 300,
+						width : 250,
 						layout : 'border',
 						items : [{
 							xtype : 'treepanel',
@@ -87,11 +87,6 @@ Ext.define('Basedata.view.BasedataYtqyView', {
 									            name: 'name',
 									            fieldLabel: 'Name',
 									            allowBlank: false  // requires a non-empty value
-									        }, {
-									            xtype: 'textfield',
-									            name: 'email',
-									            fieldLabel: 'Email Address',
-									            vtype: 'email'  // requires value to be a valid email address format
 									        }
 									    ]
 									}, {
