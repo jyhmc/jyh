@@ -46,9 +46,6 @@
 	</listener>
 
     
-
-
-
 	<!-- springmvc 配置 -->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>

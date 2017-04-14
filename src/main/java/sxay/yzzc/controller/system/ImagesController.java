@@ -51,6 +51,27 @@ public class ImagesController {
 		}
 
 	}
+	
+	@RequestMapping(value = "dabian")
+	public void dabian(HttpServletRequest request, HttpServletResponse response, String filename) throws IOException {
+
+		
+
+			File file = new File("e:/jyh/123.gif");
+			FileInputStream inputStream = new FileInputStream("e:/jyh/123.gif");
+			System.out.println("文件长度" + file.length());
+			byte[] data = new byte[(int) file.length()];
+			inputStream.read(data);
+			response.setContentType("image/gif");
+			OutputStream stream = response.getOutputStream();
+			stream.write(data);
+			stream.flush();
+			inputStream.close();
+			stream.close();
+		
+			
+
+	}
 
 	@RequestMapping(value = "upload")
 	@ResponseBody

@@ -36,12 +36,20 @@ public class LoginController {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", u);
 			map.put("result", true);
+			
 		} else {
 			map.put("result", false);
 		}
 		return map;
 	}
 
+	
+	@RequestMapping("loginapp")
+	@ResponseBody
+	public Map<String, Object> loginapp(UserInfo user, HttpServletRequest request) {
+		Map<String, Object> map = new HashMap<>();
+		return map;
+	}
 	/**
 	 * 登录成功后跳转到首页
 	 * 
@@ -50,6 +58,11 @@ public class LoginController {
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public String index() {
 		return "index";
+	}
+	
+	@RequestMapping(value = "test", method = RequestMethod.GET)
+	public String test() {
+		return "test";
 	}
 
 	/**

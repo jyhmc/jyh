@@ -30,7 +30,7 @@ Ext.define('yzzc.controller.MainCtrl', {
 		     fields: [
 		         {name: 'id', type: 'int'},
 		         {name: 'text',  type: 'string'},
-		         {name: 'leaf',   type: 'string'},
+		         {name: 'leaf',   type: 'boolean'},
 		         {name: 'url',  type: 'string'}
 		     ]
 		 });

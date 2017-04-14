@@ -12,7 +12,7 @@ Ext.define('Basedata.store.BasedataYsqyStore', {
             model: 'Basedata.model.BasedataYsqyModel',
             proxy: {
                 type:'ajax',
-                url :__ctxPath + '/base/selectByPid',
+                url :__ctxPath + '/base/selectYsqy',
                 reader:{
                 	type:'json',
                 	root:'result'

@@ -10,7 +10,7 @@ Ext.define('Basedata.view.BasedataYtqyView', {
 	initComponent : function() {
 		var me = this;
 		var treestore= Ext.create("System.store.DeptTreeStore");
-		var gridstore= Ext.create("System.store.DeptGridStore");
+		var gridstore= Ext.create("Basedata.store.BasedataYtqyStore");
 		Ext.applyIf(me, {
 			items : [{
 				xtype : 'panel',
@@ -54,41 +54,65 @@ Ext.define('Basedata.view.BasedataYtqyView', {
 										align : 'left',
 										minWidth : 50,
 										text : '序号'
+									},{
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '企业名称'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '联系方式'
 									},  {
 										xtype : 'gridcolumn',
 										dataIndex : 'text',
 										flex : 1,
 										align : 'left',
-										text : '组织名称'
+										text : '货物种类'
 									}, {
 										xtype : 'gridcolumn',
 										dataIndex : 'number',
 										flex : 1,
-										text : '组织机构代码'
+										text : '年产量（万吨）'
+									},  {
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '法人'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '负责人'
 									}],
 									dockedItems: [{
 									    xtype: 'toolbar',
 									    dock: 'top',
 									    //ui: 'footer',
 									  //  defaults: {minWidth: minButtonWidth},
-									    items: [
-									    	{
-									            xtype: 'textfield',
-									            name: 'name',
-									            fieldLabel: 'Name',
-									            allowBlank: false  // requires a non-empty value
-									        }, {
-									            xtype: 'textfield',
-									            name: 'email',
-									            fieldLabel: 'Email Address',
-									            vtype: 'email'  // requires value to be a valid email address format
-									        },{
-									            xtype: 'textfield',
-									            name: 'name',
-									            fieldLabel: 'Name',
-									            allowBlank: false  // requires a non-empty value
-									        }
-									    ]
+									    items: [ {
+											xtype : 'textfield',
+											itemId : 'cphm',
+											fieldLabel : '企业名称',
+											labelWidth : 70
+											
+										}, {
+											xtype : 'textfield',
+											itemId : 'yyzh',
+											fieldLabel : '证件号 ',
+											labelWidth : 60
+										},{
+											xtype : 'button',
+											itemId : 'YyclSerch',
+											text: '查  询'
+										} , {
+											xtype : 'button',
+											itemId : 'YyclRest',
+											text: '重  置'
+										}]
 									}, {
 										xtype : 'pagingtoolbar',
 										itemId : 'DeptGridPagingBar',

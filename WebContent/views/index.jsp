@@ -12,6 +12,7 @@
 	src="<%=request.getContextPath()%>/js/ext-all-debug.js"></script>
 <script type="text/javascript">
 var __ctxPath = "<%=request.getContextPath()%>";
+var baseService='';
 </script>
 
 
@@ -41,7 +42,7 @@ var __ctxPath = "<%=request.getContextPath()%>";
 	src="<%=request.getContextPath()%>/js/fileupload/uploaderButton.js"></script>
 
 
-<title>運政治超系統</title>
+<title>陕西省运政治超信息管理平台</title>
 </head>
 <body>
 </body>

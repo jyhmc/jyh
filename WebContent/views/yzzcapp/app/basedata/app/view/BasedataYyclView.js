@@ -10,7 +10,7 @@ Ext.define('Basedata.view.BasedataYyclView', {
 	initComponent : function() {
 		var me = this;
 		var treestore = Ext.create("System.store.DeptTreeStore");
-		var gridstore = Ext.create("System.store.DeptGridStore");
+		var gridstore = Ext.create("Basedata.store.BasedataYyclStore");
 		Ext.applyIf(me, {
 			items : [ {
 				xtype : 'panel',
@@ -47,7 +47,7 @@ Ext.define('Basedata.view.BasedataYyclView', {
 							xtype : 'gridpanel',
 							region : 'center',
 							selType : 'checkboxmodel',
-							itemId : 'DeptGridpanel',
+							itemId : 'YyclGridpanel',
 							store : gridstore,
 							columns : [ {
 								xtype : 'rownumberer',
@@ -59,13 +59,52 @@ Ext.define('Basedata.view.BasedataYyclView', {
 								dataIndex : 'text',
 								flex : 1,
 								align : 'left',
-								text : '组织名称'
+								text : '车牌号码'
 							}, {
 								xtype : 'gridcolumn',
 								dataIndex : 'number',
 								flex : 1,
-								text : '组织机构代码'
-							} ],
+								text : '车牌颜色'
+							} , {
+								xtype : 'gridcolumn',
+								dataIndex : 'text',
+								flex : 1,
+								align : 'left',
+								text : '道路运输证'
+							}, {
+								xtype : 'gridcolumn',
+								dataIndex : 'number',
+								flex : 1,
+								text : '运输企业'
+							}, {
+								xtype : 'gridcolumn',
+								dataIndex : 'text',
+								flex : 1,
+								align : 'left',
+								text : '营运证号'
+							}, {
+								xtype : 'gridcolumn',
+								dataIndex : 'number',
+								flex : 1,
+								text : '车辆状态'
+							}, {
+								xtype : 'gridcolumn',
+								dataIndex : 'text',
+								flex : 1,
+								align : 'left',
+								text : '车辆类型'
+							}, {
+								xtype : 'gridcolumn',
+								dataIndex : 'number',
+								flex : 1,
+								text : '经营范围'
+							}, {
+								xtype : 'gridcolumn',
+								dataIndex : 'text',
+								flex : 1,
+								align : 'left',
+								text : '发证机构'
+							}],
 							dockedItems : [ {
 								xtype : 'toolbar',
 								dock : 'top',
@@ -73,32 +112,28 @@ Ext.define('Basedata.view.BasedataYyclView', {
 								// defaults: {minWidth: minButtonWidth},
 								items : [ {
 									xtype : 'textfield',
-									name : 'name',
-									fieldLabel : 'Name',
-									labelWidth : 80,
-									allowBlank : false
+									itemId : 'cphm',
+									fieldLabel : '车牌号码',
+									labelWidth : 70
+									
 								}, {
 									xtype : 'textfield',
-									name : 'email',
-									fieldLabel : 'Email ',
-									labelWidth : 80,
-									vtype : 'email' 
+									itemId : 'yyzh',
+									fieldLabel : '营运证号 ',
+									labelWidth : 70
 								}, {
 									xtype : 'textfield',
-									name : 'name',
+									itemId : 'dlysz',
 									labelWidth : 80,
-									fieldLabel : 'Name',
-									allowBlank : false
+									fieldLabel : '道路运输证'
 								} , {
 									xtype : 'button',
-									name : 'name',
-									text: '查  询',
-									allowBlank : false
+									itemId : 'YyclSerch',
+									text: '查  询'
 								} , {
 									xtype : 'button',
-									name : 'name',
-									text: '重  置',
-									allowBlank : false
+									itemId : 'YyclRest',
+									text: '重  置'
 								}]
 							}, {
 								xtype : 'pagingtoolbar',
@@ -115,3 +150,33 @@ Ext.define('Basedata.view.BasedataYyclView', {
 		me.callParent(arguments);
 	}
 });
+
+/*
+ * 流程监控 Ushine 2016-05-20
+ */
+/*Ext.define('Basedata.view.BasedataYyclView', {
+			extend : 'Ext.container.Container',
+			alias : 'widget.BasedataYyclView',
+
+			height : 250,
+			width : 400,
+			layout : 'border',
+
+			initComponent : function() {
+				var me = this;
+				Ext.applyIf(me, {
+							items : [{
+										xtype : 'panel',
+										region : 'north',
+										//height : 35,
+										title : '当前位置：&nbsp;工作流管理&nbsp;&gt;&nbsp;流程监控'
+									}, {
+										xtype : 'panel',
+										region : 'center',
+										html : '<iframe width="100%" border="0" height="100%" id="" src="' + __ctxPath
+												+ '/test"></iframe>'
+									}]
+						});
+				me.callParent(arguments);
+			}
+		});*/

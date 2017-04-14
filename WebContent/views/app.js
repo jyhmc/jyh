@@ -7,7 +7,7 @@ Ext.onReady(function() {
 	Helper = 'Homepage.controller.HomepageController';// 帮助类名，全局变量
 	var paths = {
 		'Ext' : '../ext',
-		'yzzc' : __ctxPath+'/views/app'
+		'yzzc' : __ctxPath + '/views/app'
 	}
 	var cpath = __ctxPath.split('/');
 	var cpathfrnt = cpath[cpath.length - 1];
@@ -20,6 +20,15 @@ Ext.onReady(function() {
 			eval(nm);
 		}
 	}
+	
+	//判断session是否过期
+	Ext.Ajax.on('requestexception', function(conn, response, options) {
+		if (response.status =='500' ) {
+			Ext.Msg.alert('提示', '会话失效，请重新登录!', function() {
+				window.location.href = __ctxPath + '/login.jsp';
+			});
+		}
+	});
 	
 	var controllers = [ 'MainCtrl' ];
 	Ext.application({

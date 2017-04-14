@@ -10,7 +10,7 @@ Ext.define('Basedata.view.BasedataYsqyView', {
 	initComponent : function() {
 		var me = this;
 		var treestore= Ext.create("System.store.DeptTreeStore");
-		var gridstore= Ext.create("System.store.DeptGridStore");
+		var gridstore= Ext.create("Basedata.store.BasedataYsqyStore");
 		Ext.applyIf(me, {
 			items : [{
 				xtype : 'panel',
@@ -47,24 +47,57 @@ Ext.define('Basedata.view.BasedataYsqyView', {
 							xtype : 'gridpanel',
 							region : 'center',
 							selType : 'checkboxmodel',
-							itemId : 'DeptGridpanel',
+							itemId : 'YsqyGridpanel',
 							store : gridstore,
 							columns : [{
 										xtype : 'rownumberer',
 										align : 'left',
 										minWidth : 50,
 										text : '序号'
-									},  {
+									},{
 										xtype : 'gridcolumn',
 										dataIndex : 'text',
 										flex : 1,
 										align : 'left',
-										text : '组织名称'
+										text : '业户名称'
 									}, {
 										xtype : 'gridcolumn',
 										dataIndex : 'number',
 										flex : 1,
-										text : '组织机构代码'
+										text : '营运证号'
+									},{
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '业户地址'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '经营范围'
+									},{
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '业户状态'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '发证机构'
+									},{
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '有效始日期'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '有效止日期'
 									}],
 									dockedItems: [{
 										xtype : 'toolbar',
@@ -73,36 +106,31 @@ Ext.define('Basedata.view.BasedataYsqyView', {
 										// defaults: {minWidth: minButtonWidth},
 										items : [ {
 											xtype : 'textfield',
-											name : 'name',
-											fieldLabel : 'Name',
-											labelWidth : 80,
-											allowBlank : false
+											itemId:'yhmc',
+											fieldLabel : '业户名称',
+											labelWidth : 70
 										}, {
 											xtype : 'textfield',
-											name : 'email',
-											fieldLabel : 'Email ',
-											labelWidth : 80,
-											vtype : 'email' 
+											itemId:'yhbh',
+											fieldLabel : '业户编号',
+											labelWidth : 70
 										}, {
 											xtype : 'textfield',
-											name : 'name',
-											labelWidth : 80,
-											fieldLabel : 'Name',
-											allowBlank : false
+											itemId:'yyzh',
+											labelWidth : 70,
+											fieldLabel : '营运证号'
 										} , {
 											xtype : 'button',
-											name : 'name',
-											text: '查  询',
-											allowBlank : false
+											itemId:'YsqySerch',
+											text: '查  询'
 										} , {
 											xtype : 'button',
-											name : 'name',
-											text: '重  置',
-											allowBlank : false
+											itemId:'YsqyRest',
+											text: '重  置'
 										}]
 									}, {
 										xtype : 'pagingtoolbar',
-										itemId : 'DeptGridPagingBar',
+										itemId : 'GridPagingBar',
 										store : gridstore,
 										dock : 'bottom',
 										displayInfo : true

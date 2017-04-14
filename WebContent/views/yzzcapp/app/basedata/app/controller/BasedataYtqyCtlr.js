@@ -18,7 +18,10 @@ Ext.define('Basedata.controller.BasedataYtqyCtlr', {
 		});
 		store.loadPage(1);
 	},
-
+	
+	
+	
+	
 	init : function(application) {
 		this.control({
 			"BasedataYtqyView  treepanel[itemId=DeptTreepanel]" : {

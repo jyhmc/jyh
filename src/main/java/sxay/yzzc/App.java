@@ -8,6 +8,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.web.client.RestTemplate;
 
 
 /**
@@ -23,9 +24,11 @@ public class App {
 		
 		UUID uuid = UUID.randomUUID();
 		System.out.println(uuid);
+	    RestTemplate restTemplate=new RestTemplate();
+		String result = restTemplate.getForObject("http://localhost:8080/yzzc/sys/selectRole", String.class, "42", "21");
+		System.out.println(result);
 
 	}
-
 	/**
 	 * mybatis 实例演练
 	 * 

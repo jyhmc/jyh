@@ -10,7 +10,7 @@ Ext.define('Basedata.view.BasedataCyryView', {
 	initComponent : function() {
 		var me = this;
 		var treestore= Ext.create("System.store.DeptTreeStore");
-		var gridstore= Ext.create("System.store.DeptGridStore");
+		var gridstore= Ext.create("Basedata.store.BasedataCyryStore");
 		Ext.applyIf(me, {
 			items : [{
 				xtype : 'panel',
@@ -41,153 +41,105 @@ Ext.define('Basedata.view.BasedataCyryView', {
 					}, {
 						xtype : 'container',
 						region : 'center',
-						border:false,
-						flex : 5,
-						layout : {
-							type : 'border'
-						},
-						items : [{/*
-									xtype : 'toolbar',
-									layout : 'table',
-									border:false,
-									region: 'north',
-								//	bodyPadding : 10,
-									height: 33,
-									items : [{
-												xtype : 'textfield',
-												width : 220,
-												fieldLabel : '产品名称',
-												dataIndex : 'productName',
-												itemId : 'productName',
-												labelWidth : 70
-											}, {
-												xtype : 'textfield',
-												width : 220,
-												fieldLabel : '产品编码',
-												dataIndex : 'productCode',
-												itemId : 'productCode',
-												labelWidth : 70
-											},  {
-												xtype : 'button',
-												itemId : 'btnProduct_search',
-												text : '查询'
-												
-											}, {
-												xtype : 'button',
-												text : '清空',
-												itemId : 'button-clear'
-											}]
-								*/}, {
-									xtype : 'gridpanel',
-									border:false,
-									//store : store,
-									itemId : 'productListGrid',
-									selType : 'checkboxmodel',
-									autoScroll : true,
-									region: 'center',
-									columns : [
-										{
-											xtype : 'rownumberer',
-											width : 70,
-											text : '序号'
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'productCode',
-											text : '产品编码',
-											flex: 1,
-											renderer:function(value){
-												return value.link("#");
-											}
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'productName',
-											flex: 1,
-											text : '产品名称'
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'productVersion',
-											flex: 1,
-											hidden:true,
-											text : ' 版本'
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'productStyle',
-											flex: 1,
-												hidden:true,
-											text : '规格型号'
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'assetCode',
-											flex: 1,
-												hidden:true,
-											text : '资产编号'
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'productSymbol',
-											flex: 1,
-											text : '产品代号 '
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'pictureNo',
-											flex: 1,
-											hidden:true,
-											text : '图号'
-										}, 
-										{
-											xtype : 'gridcolumn',
-											dataIndex : 'remark',
-											flex: 1,
-											text : '备注'
-										}],
-									dockedItems : [{
+						layout : 'border',
+						items : [{
+							xtype : 'gridpanel',
+							region : 'center',
+							selType : 'checkboxmodel',
+							itemId : 'CyryGridpanel',
+							store : gridstore,
+							columns : [{
+										xtype : 'rownumberer',
+										align : 'left',
+										minWidth : 50,
+										text : '序号'
+									},  {
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '姓名'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '资格证号'
+									},  {
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '身份证号'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '发证机构'
+									},  {
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '状态'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '资格证类型'
+									},  {
+										xtype : 'gridcolumn',
+										dataIndex : 'text',
+										flex : 1,
+										align : 'left',
+										text : '发证日期'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '年审日期'
+									}, {
+										xtype : 'gridcolumn',
+										dataIndex : 'number',
+										flex : 1,
+										text : '驾照类型'
+									}],
+									dockedItems: [{
 										xtype : 'toolbar',
 										dock : 'top',
 										// ui: 'footer',
 										// defaults: {minWidth: minButtonWidth},
 										items : [ {
 											xtype : 'textfield',
-											name : 'name',
-											fieldLabel : 'Name',
-											labelWidth : 80,
-											allowBlank : false
+											itemId:'jsyxm',
+											fieldLabel : '驾驶员姓名',
+											labelWidth : 80
 										}, {
 											xtype : 'textfield',
-											name : 'email',
-											fieldLabel : 'Email ',
-											labelWidth : 80,
-											vtype : 'email' 
+											itemId:'sfzh',
+											fieldLabel : '身份证号 ',
+											labelWidth : 70
 										}, {
 											xtype : 'textfield',
-											name : 'name',
-											labelWidth : 80,
-											fieldLabel : 'Name',
-											allowBlank : false
+											name : 'jszh',
+											labelWidth : 70,
+											fieldLabel : '驾驶证号'
 										} , {
 											xtype : 'button',
-											name : 'name',
-											text: '查  询',
-											allowBlank : false
+											itemId:'CyrySerch',
+											text: '查  询'
 										} , {
 											xtype : 'button',
-											name : 'name',
-											text: '重  置',
-											allowBlank : false
+											itemId:'CyryRest',
+											text: '重  置'
 										}]
 									}, {
 										xtype : 'pagingtoolbar',
-										itemId : 'productsPagingBar',
-										//store : store,
+										itemId : 'GridPagingBar',
+										store : gridstore,
 										dock : 'bottom',
 										displayInfo : true
 									}]
-								}]
+						}]
 					}]
 				}]
 			}]
